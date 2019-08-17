@@ -11,6 +11,7 @@ import DashBoardProfileDetails from "./DashBoardProfileDetails";
 import DashBoardUserAnalysis from "./DashBoardUserAnalysis";
 import DashBoardUserFriendsList from "./DashBoardUserFriendsList";
 import DashBoardRedditDetails from "./DashBoardRedditDetails";
+import DashBoardStackOverFlowDetails from "./DashBoardStackOverFlowDetails";
 
 class DashBoardIndex extends React.Component {
   render() {
@@ -22,6 +23,9 @@ class DashBoardIndex extends React.Component {
               <DashBoardProfileDetails />
               {this.context.userData.subreddits[0] !== undefined ? (
                 <DashBoardRedditDetails />
+              ) : null}
+              {this.context.userData.stackoverflow_data[0] !== undefined ? (
+                <DashBoardStackOverFlowDetails />
               ) : null}
             </Grid>
             <Grid item md={6}>

@@ -1,0 +1,17 @@
+
+K Means Clustering
+
+1.Start with K centroids by Putting them at random place ,For example K=2
+2.Compute distance of every point from centroid and cluster them accordingly
+3.Recompute the disctances and adjust the centroid until the clusters doesnt change 
+
+
+SSE = Sum of Squared Errors
+
+difference between each point from the clusters and summing it up
+then plotting it in a graph (X_axis = k ,y_axis=SSE)
+plot the elbow point
+
+
+####Presentation Speech####
+Thank you for being here today.I'm Saranraj from Chennai Institute Of Technology.I'm here today to talk about my soluton for the problem statement Friend Affinity Finder 

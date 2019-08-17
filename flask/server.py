@@ -18,6 +18,7 @@ import re
 import csv
 import pickle
 import gzip
+import requests
 from os.path import join, dirname
 
 # watson
@@ -61,6 +62,7 @@ def getUserDetails():
     tweets=item.statuses_count
     friends=[]
     subreddits_data=[]
+    stackoverflow_data=[]
     # get friends name and append it to the list
     for friend in item.friends():
         friends.append(friend.screen_name)
@@ -83,6 +85,15 @@ def getUserDetails():
         subreddits=reddit.user.subreddits(limit=100)
         for reddit_item in subreddits:
             subreddits_data.append(reddit_item.display_name)
+    
+    # Get Stack OverFlow Tags
+    stackoverflow_id=request.args.get("stackOverflowID")
+
+    if(stackoverflow_id!=""):
+        stackapi_url="https://api.stackexchange.com/2.2/users/"+stackoverflow_id+"/tags?order=desc&sort=popular&site=stackoverflow"
+        r=requests.get(url=stackapi_url)
+        stack_data=r.json()
+        stackoverflow_data.append(stack_data)   
 
     data={
         "name":item.name,
@@ -91,7 +102,8 @@ def getUserDetails():
         "tweets_count":tweets,
         "friends_count":len(friends),
         "profile_pic_url":item.profile_image_url,
-        "subreddits":subreddits_data
+        "subreddits":subreddits_data,
+        "stackoverflow_data":stackoverflow_data
     }
 
     return jsonify(data)

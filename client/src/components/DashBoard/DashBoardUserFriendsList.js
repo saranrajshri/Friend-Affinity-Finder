@@ -4,7 +4,11 @@ import React from "react";
 import UserContext from "../Context/UserContext";
 
 // MaterialUI Components
-import { Paper, Typography, Divider } from "@material-ui/core";
+import { Paper, Typography, Divider, Grid } from "@material-ui/core";
+
+//FontAwesome
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faUserEdit, faTrash } from "@fortawesome/free-solid-svg-icons";
 
 class DashBoardUserAnalysis extends React.Component {
   render() {
@@ -17,9 +21,11 @@ class DashBoardUserAnalysis extends React.Component {
         <br />
         {this.context.userData.friends.map((value, index) => {
           return (
-            <Typography key={index} style={styles.friendsName}>
-              {value}
-            </Typography>
+            <div key={index}>
+              <Typography align="left" style={styles.friendsName}>
+                {value}
+              </Typography>
+            </div>
           );
         })}
       </Paper>
@@ -35,6 +41,10 @@ const styles = {
   },
   headerText: {
     color: "#34495e"
+  },
+  optionsIcons: {
+    color: "#7f8c8d",
+    marginRight: 15
   }
 };
 DashBoardUserAnalysis.contextType = UserContext;

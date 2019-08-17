@@ -20,7 +20,11 @@ import axios from "axios";
 
 // Font Awesome Icons
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faTwitter, faReddit } from "@fortawesome/free-brands-svg-icons";
+import {
+  faTwitter,
+  faReddit,
+  faStackOverflow
+} from "@fortawesome/free-brands-svg-icons";
 
 // COmponents
 import DashBoard from "../DashBoard/DashBoard";
@@ -34,8 +38,10 @@ class LoginForm extends React.Component {
       twitterName: "",
       loginButtonIsDisabled: false,
       redditLogin: false,
+      stackOverflowLogin: false,
       redditName: "",
-      redditPassword: ""
+      redditPassword: "",
+      stackOverflowID: ""
     };
   }
 
@@ -57,12 +63,14 @@ class LoginForm extends React.Component {
     // Get details from the backend
     axios
       .get(
-        " http://127.0.0.1:5000/api/getUserDetails?twitter_name=" +
+        "http://127.0.0.1:5000/api/getUserDetails?twitter_name=" +
           this.state.twitterName +
           "&reddit_name=" +
           this.state.redditName +
           "&reddit_password=" +
-          this.state.redditPassword
+          this.state.redditPassword +
+          "&stackOverflowID=" +
+          this.state.stackOverflowID
       )
       .then(response => {
         // send data to the context
@@ -75,10 +83,17 @@ class LoginForm extends React.Component {
       });
   };
 
-  // handle check box change
+  // show reddit login form
   showRedditLoginForm = () => {
     this.setState({
       redditLogin: !this.state.redditLogin
+    });
+  };
+
+  // show stackoverflow login form
+  showStackOverflowForm = () => {
+    this.setState({
+      stackOverflowLogin: !this.state.stackOverflowLogin
     });
   };
 
@@ -150,12 +165,53 @@ class LoginForm extends React.Component {
                       onClick={this.showRedditLoginForm}
                       style={styles.redditButton}
                     >
+                      <FontAwesomeIcon
+                        icon={faReddit}
+                        style={styles.redditLogo}
+                      />{" "}
                       I also have an reddit account
                     </Button>
                   </div>
                 )}
 
-                {/* Reddit Login Form */}
+                {/* Reddit Login Form End*/}
+
+                <Divider />
+                {this.state.stackOverflowLogin ? (
+                  <div>
+                    <Typography variant="h6" style={styles.loginFormHeader}>
+                      <FontAwesomeIcon
+                        icon={faStackOverflow}
+                        style={styles.redditLogo}
+                      />
+                      Enter Your Stackoverflow ID
+                    </Typography>
+                    <TextField
+                      style={styles.loginFormInput}
+                      id="outlined-name"
+                      label="Enter Your StackOverflow ID"
+                      margin="normal"
+                      name="stackOverflowID"
+                      variant="outlined"
+                      onChange={this.handleChange}
+                    />
+                  </div>
+                ) : (
+                  <div>
+                    <Divider />
+                    <Button
+                      onClick={this.showStackOverflowForm}
+                      style={styles.redditButton}
+                    >
+                      <FontAwesomeIcon
+                        icon={faStackOverflow}
+                        style={styles.redditLogo}
+                      />{" "}
+                      I also have an stackoverflow account
+                    </Button>
+                  </div>
+                )}
+                {/* StackoverflowForm */}
                 <Divider />
                 {/* Button */}
                 {this.state.loginButtonIsDisabled ? (
