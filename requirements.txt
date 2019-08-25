@@ -15,7 +15,6 @@ Flask==1.0.3
 Flask-Cors==3.0.8
 Flask-RESTful==0.3.7
 gunicorn==19.9.0
-gyp==0.1
 httplib2==0.13.0
 idna==2.6
 imutils==0.5.2
