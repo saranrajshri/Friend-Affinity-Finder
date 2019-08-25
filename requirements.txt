@@ -44,7 +44,6 @@ PyPDF2==1.26.0
 pypdfocr==0.9.1
 PySocks==1.7.0
 python-dateutil==2.8.0
-python-magic==0.4.16
 pytz==2019.1
 pywatchman==1.4.0
 PyWavelets==1.0.3
