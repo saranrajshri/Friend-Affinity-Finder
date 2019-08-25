@@ -63,7 +63,7 @@ class LoginForm extends React.Component {
     // Get details from the backend
     axios
       .get(
-        "http://127.0.0.1:5000/api/getUserDetails?twitter_name=" +
+        "/api/getUserDetails?twitter_name=" +
           this.state.twitterName +
           "&reddit_name=" +
           this.state.redditName +

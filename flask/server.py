@@ -2,7 +2,7 @@ from flask import Flask
 from flask import jsonify
 from flask_cors import CORS
 from flask import request
-import flask
+from flask import Flask, send_from_directory
 
 # Tweepy
 from tweepy import OAuthHandler
@@ -30,7 +30,7 @@ from ibm_watson.natural_language_understanding_v1 import Features, EntitiesOptio
 # Scikit leanr
 from sklearn.metrics.pairwise import cosine_similarity
 
-app=Flask(__name__)
+app=Flask(__name__,static_folder='../client/build/')
 
 # Twitter Api Credentials
 consumer_key="29t0d6bCnEPbWynevgwubCWAZ"
@@ -297,9 +297,15 @@ def getFriendsTweetsAndCalcPersonalityInsights():
     print("got result for =>",username)
     return result    
 
-#serve frontend
-@app.route('/')
-def index():
-    return flask.render_template("index.html",token="faf")
+# Serve React App
+@app.route('/', defaults={'path': ''})
+@app.route('/<path:path>')
+def serve(path):
+    if path != "" and os.path.exists(app.static_folder + path):
+        return send_from_directory(app.static_folder, path)
+    else:
+        return send_from_directory(app.static_folder, 'index.html')
 
-app.run()
+
+if __name__ == '__main__':
+    app.run(use_reloader=True, port=5000, threaded=True)
