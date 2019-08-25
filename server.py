@@ -30,7 +30,7 @@ from ibm_watson.natural_language_understanding_v1 import Features, EntitiesOptio
 # Scikit leanr
 from sklearn.metrics.pairwise import cosine_similarity
 
-app=Flask(__name__,static_folder='../client/build/')
+app=Flask(__name__,static_folder='./client/build/')
 
 # Twitter Api Credentials
 consumer_key="29t0d6bCnEPbWynevgwubCWAZ"
