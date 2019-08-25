@@ -39,7 +39,6 @@ patsy==0.5.1
 Pillow==5.1.0
 pycairo==1.16.2
 pycrypto==2.6.1
-pygobject==3.26.1
 pyparsing==2.4.0
 PyPDF2==1.26.0
 pypdfocr==0.9.1
