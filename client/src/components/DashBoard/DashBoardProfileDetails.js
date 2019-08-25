@@ -10,13 +10,13 @@ class DashBoardProfileDetails extends React.Component {
     return (
       <Paper style={styles.userDetails}>
         <Grid container>
-          <Grid item md={3}>
+          <Grid item md={3} xs={3}>
             <Avatar
               src={this.context.userData.profile_pic_url}
               style={styles.avatar}
             />
           </Grid>
-          <Grid item md={9}>
+          <Grid item md={9} xs={9}>
             <Typography align="left" variant="h6" style={styles.userName}>
               {this.context.userData.name}
             </Typography>
@@ -27,13 +27,13 @@ class DashBoardProfileDetails extends React.Component {
           </Grid>
           <hr />
           <Grid container style={styles.details}>
-            <Grid item md={6}>
+            <Grid item md={6} xs={6}>
               <Typography style={styles.detailsHeader}>Tweets</Typography>
               <Typography style={styles.detailsText}>
                 {this.context.userData.tweets_count}
               </Typography>
             </Grid>
-            <Grid item md={6}>
+            <Grid item md={6} md={6}>
               <Typography style={styles.detailsHeader}>Friends</Typography>
               <Typography style={styles.detailsText}>
                 {this.context.userData.friends_count}

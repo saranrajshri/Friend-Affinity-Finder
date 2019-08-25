@@ -80,27 +80,53 @@ class FriendsAnalysisTabs extends React.Component {
                         </Typography>
                       </Grid>
                     </Grid>
-                    <Typography align="left" style={styles.features}>
-                      Agreeableness :{" "}
-                      {(value.personality[3].percentile * 100).toFixed(0) + "%"}
-                    </Typography>
-                    <Typography align="left" style={styles.features}>
-                      Conscientiousness :
-                      {(value.personality[1].percentile * 100).toFixed(0) + "%"}
-                    </Typography>
-                    <Typography align="left" style={styles.features}>
-                      Openess :{" "}
-                      {(value.personality[0].percentile * 100).toFixed(0) + "%"}
-                    </Typography>
-                    <Typography align="left" style={styles.features}>
-                      Extraversion :{" "}
-                      {(value.personality[2].percentile * 100).toFixed(0) + "%"}
-                    </Typography>
-                    <Typography align="left" style={styles.features}>
-                      Emotional Range :{" "}
-                      {(value.personality[4].percentile * 100).toFixed(0) + "%"}
-                    </Typography>
-
+                    <Grid container style={styles.resultsContainer}>
+                      <Grid item md={8}>
+                        <Typography align="left" style={styles.features}>
+                          Agreeableness :{" "}
+                          {(value.personality[3].percentile * 100).toFixed(0) +
+                            "%"}
+                        </Typography>
+                        <Typography align="left" style={styles.features}>
+                          Conscientiousness :
+                          {(value.personality[1].percentile * 100).toFixed(0) +
+                            "%"}
+                        </Typography>
+                        <Typography align="left" style={styles.features}>
+                          Openess :{" "}
+                          {(value.personality[0].percentile * 100).toFixed(0) +
+                            "%"}
+                        </Typography>
+                        <Typography align="left" style={styles.features}>
+                          Extraversion :{" "}
+                          {(value.personality[2].percentile * 100).toFixed(0) +
+                            "%"}
+                        </Typography>
+                        <Typography align="left" style={styles.features}>
+                          Emotional Range :{" "}
+                          {(value.personality[4].percentile * 100).toFixed(0) +
+                            "%"}
+                        </Typography>
+                      </Grid>
+                      <Grid item md={4}>
+                        {value.stackoverflow_data.items !== undefined ? (
+                          <Typography varinat="h6" style={styles.interests}>
+                            Interests
+                          </Typography>
+                        ) : null}
+                        {value.stackoverflow_data.items !== undefined
+                          ? value.stackoverflow_data.items
+                              .slice(0, 3)
+                              .map((val, index_1) => {
+                                return (
+                                  <Typography key={index_1}>
+                                    {val.name}
+                                  </Typography>
+                                );
+                              })
+                          : null}
+                      </Grid>
+                    </Grid>
                     <Divider />
                   </div>
                 );
@@ -134,27 +160,54 @@ class FriendsAnalysisTabs extends React.Component {
                         </Typography>
                       </Grid>
                     </Grid>
-                    <Typography align="left" style={styles.features}>
-                      Agreeableness :{" "}
-                      {(value.personality[3].percentile * 100).toFixed(0) + "%"}
-                    </Typography>
-                    <Typography align="left" style={styles.features}>
-                      Conscientiousness :
-                      {(value.personality[1].percentile * 100).toFixed(0) + "%"}
-                    </Typography>
-                    <Typography align="left" style={styles.features}>
-                      Openess :{" "}
-                      {(value.personality[0].percentile * 100).toFixed(0) + "%"}
-                    </Typography>
-                    <Typography align="left" style={styles.features}>
-                      Extraversion :{" "}
-                      {(value.personality[2].percentile * 100).toFixed(0) + "%"}
-                    </Typography>
-                    <Typography align="left" style={styles.features}>
-                      Emotional Range :{" "}
-                      {(value.personality[4].percentile * 100).toFixed(0) + "%"}
-                    </Typography>
+                    <Grid container style={styles.resultsContainer}>
+                      <Grid item md={8}>
+                        <Typography align="left" style={styles.features}>
+                          Agreeableness :{" "}
+                          {(value.personality[3].percentile * 100).toFixed(0) +
+                            "%"}
+                        </Typography>
+                        <Typography align="left" style={styles.features}>
+                          Conscientiousness :
+                          {(value.personality[1].percentile * 100).toFixed(0) +
+                            "%"}
+                        </Typography>
+                        <Typography align="left" style={styles.features}>
+                          Openess :{" "}
+                          {(value.personality[0].percentile * 100).toFixed(0) +
+                            "%"}
+                        </Typography>
+                        <Typography align="left" style={styles.features}>
+                          Extraversion :{" "}
+                          {(value.personality[2].percentile * 100).toFixed(0) +
+                            "%"}
+                        </Typography>
+                        <Typography align="left" style={styles.features}>
+                          Emotional Range :{" "}
+                          {(value.personality[4].percentile * 100).toFixed(0) +
+                            "%"}
+                        </Typography>
+                      </Grid>
+                      <Grid item md={4}>
+                        {value.stackoverflow_data.items !== undefined ? (
+                          <Typography varinat="h6" style={styles.interests}>
+                            Interests
+                          </Typography>
+                        ) : null}
 
+                        {value.stackoverflow_data.items !== undefined
+                          ? value.stackoverflow_data.items
+                              .slice(0, 3)
+                              .map((val, index_1) => {
+                                return (
+                                  <Typography key={index_1}>
+                                    {val.name}
+                                  </Typography>
+                                );
+                              })
+                          : null}
+                      </Grid>
+                    </Grid>
                     <Divider />
                   </div>
                 );
@@ -188,26 +241,53 @@ class FriendsAnalysisTabs extends React.Component {
                         </Typography>
                       </Grid>
                     </Grid>
-                    <Typography align="left" style={styles.features}>
-                      Agreeableness :{" "}
-                      {(value.personality[3].percentile * 100).toFixed(0) + "%"}
-                    </Typography>
-                    <Typography align="left" style={styles.features}>
-                      Conscientiousness :
-                      {(value.personality[1].percentile * 100).toFixed(0) + "%"}
-                    </Typography>
-                    <Typography align="left" style={styles.features}>
-                      Openess :{" "}
-                      {(value.personality[0].percentile * 100).toFixed(0) + "%"}
-                    </Typography>
-                    <Typography align="left" style={styles.features}>
-                      Extraversion :{" "}
-                      {(value.personality[2].percentile * 100).toFixed(0) + "%"}
-                    </Typography>
-                    <Typography align="left" style={styles.features}>
-                      Emotional Range :{" "}
-                      {(value.personality[4].percentile * 100).toFixed(0) + "%"}
-                    </Typography>
+                    <Grid container style={styles.resultsContainer}>
+                      <Grid item md={8}>
+                        <Typography align="left" style={styles.features}>
+                          Agreeableness :{" "}
+                          {(value.personality[3].percentile * 100).toFixed(0) +
+                            "%"}
+                        </Typography>
+                        <Typography align="left" style={styles.features}>
+                          Conscientiousness :
+                          {(value.personality[1].percentile * 100).toFixed(0) +
+                            "%"}
+                        </Typography>
+                        <Typography align="left" style={styles.features}>
+                          Openess :{" "}
+                          {(value.personality[0].percentile * 100).toFixed(0) +
+                            "%"}
+                        </Typography>
+                        <Typography align="left" style={styles.features}>
+                          Extraversion :{" "}
+                          {(value.personality[2].percentile * 100).toFixed(0) +
+                            "%"}
+                        </Typography>
+                        <Typography align="left" style={styles.features}>
+                          Emotional Range :{" "}
+                          {(value.personality[4].percentile * 100).toFixed(0) +
+                            "%"}
+                        </Typography>
+                      </Grid>
+                      <Grid item md={4}>
+                        {value.stackoverflow_data.items !== undefined ? (
+                          <Typography varinat="h6" style={styles.interests}>
+                            Interests
+                          </Typography>
+                        ) : null}
+                        {value.stackoverflow_data.items !== undefined
+                          ? value.stackoverflow_data.items
+                              .slice(0, 3)
+                              .map((val, index_1) => {
+                                return (
+                                  <Typography key={index_1}>
+                                    {val.name}
+                                  </Typography>
+                                );
+                              })
+                          : null}
+                      </Grid>
+                    </Grid>
                     <Divider />
                   </div>
                 );
@@ -221,6 +301,15 @@ class FriendsAnalysisTabs extends React.Component {
     );
   }
 }
-const styles = {};
+const styles = {
+  interests: {
+    fontWeight: "bold",
+    fontSize: 20,
+    color: "#7f8c8d"
+  },
+  resultsContainer: {
+    marginTop: 10
+  }
+};
 FriendsAnalysisTabs.contextType = UserContext;
 export default FriendsAnalysisTabs;

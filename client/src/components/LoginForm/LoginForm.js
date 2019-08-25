@@ -103,7 +103,7 @@ class LoginForm extends React.Component {
         <Container style={styles.root}>
           <Grid container>
             <Grid item md={3} />
-            <Grid item md={6}>
+            <Grid item md={6} xs={12}>
               <Paper style={styles.loginForm}>
                 {/* ProgessBar */}
                 {this.state.isLoading ? (

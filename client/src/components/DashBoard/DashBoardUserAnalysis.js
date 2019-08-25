@@ -54,7 +54,7 @@ class DashBoardUserAnalysis extends React.Component {
     };
   }
   render() {
-    console.log(this.state.personalityInsights);
+    // console.log(this.state.personalityInsights);
     // Showing progress icon while analyzing
     if (!this.state.isLoading) {
       return (

@@ -2,6 +2,7 @@ from flask import Flask
 from flask import jsonify
 from flask_cors import CORS
 from flask import request
+import flask
 
 # Tweepy
 from tweepy import OAuthHandler
@@ -199,11 +200,17 @@ def getData():
 	    features=Features(sentiment=SentimentOptions())).get_result()
     return(json.dumps(response, indent=2))
 
+
+############################# FRIENDS ANALYSIS #############################################
+
 # Get Friends Tweets And Calculate Personality Insights
 @app.route('/api/getFriendsData/',methods=['GET','POST'])
 def getFriendsTweetsAndCalcPersonalityInsights():
     
     username=request.args.get('username')
+    reddit_name=request.args.get('redditName')
+    stackoverflowid=request.args.get('stackOverflowID')
+
     item=auth_api.get_user(username)
     tweets=[]
     tweet_count=0
@@ -227,6 +234,9 @@ def getFriendsTweetsAndCalcPersonalityInsights():
         if tweet_count==200:
             break
     
+    
+        
+
     #Store the tweets for later use
     data={
         'tweets':tweets
@@ -247,6 +257,14 @@ def getFriendsTweetsAndCalcPersonalityInsights():
         profile['name']=item.name
         profile['screen_name']=item.screen_name
         profile['profile_pic_url']=item.profile_image_url
+
+        # Get Stack OverFlow Tags
+        
+        if(stackoverflowid!=None or stackoverflowid!=""):
+            stackapi_url="https://api.stackexchange.com/2.2/users/"+stackoverflowid+"/tags?order=desc&sort=popular&site=stackoverflow"
+            r=requests.get(url=stackapi_url)
+            friends_stack_data=r.json()
+            profile['stackoverflow_data']=friends_stack_data
 
         # Getting Specific data for predicting the cluster
         openess=json.dumps(profile['personality'][0]["percentile"])
@@ -279,3 +297,9 @@ def getFriendsTweetsAndCalcPersonalityInsights():
     print("got result for =>",username)
     return result    
 
+#serve frontend
+@app.route('/')
+def index():
+    return flask.render_template("index.html",token="faf")
+
+app.run()

@@ -19,7 +19,7 @@ class DashBoardIndex extends React.Component {
       <div style={styles.root}>
         <Container>
           <Grid container spacing={2}>
-            <Grid item md={3}>
+            <Grid item md={3} xs={12}>
               <DashBoardProfileDetails />
               {this.context.userData.subreddits[0] !== undefined ? (
                 <DashBoardRedditDetails />
@@ -28,10 +28,10 @@ class DashBoardIndex extends React.Component {
                 <DashBoardStackOverFlowDetails />
               ) : null}
             </Grid>
-            <Grid item md={6}>
+            <Grid item md={6} xs={12}>
               <DashBoardUserAnalysis />
             </Grid>
-            <Grid item md={3}>
+            <Grid item md={3} xs={12}>
               <DashBoardUserFriendsList />
             </Grid>
           </Grid>

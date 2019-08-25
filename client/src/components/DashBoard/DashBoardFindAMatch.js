@@ -34,24 +34,30 @@ class DashBoardFindAMatch extends React.Component {
   getData = username => {
     return new Promise((resolve, reject) => {
       // Sending the user data to calculate match percentage
+      var url =
+        "http://127.0.0.1:5000/api/getFriendsData?username=" +
+        username +
+        "&" +
+        "redditName=" +
+        this.context.friendsRedditData[username] +
+        "&" +
+        "stackOverflowID=" +
+        this.context.friendsStackOverflowData[username] +
+        "&userList=" +
+        this.context.userPersonalityData.personality[3].percentile +
+        "," +
+        this.context.userPersonalityData.personality[1].percentile +
+        "," +
+        this.context.userPersonalityData.personality[0].percentile +
+        "," +
+        this.context.userPersonalityData.personality[2].percentile +
+        "," +
+        this.context.userPersonalityData.personality[4].percentile;
       axios
-        .get(
-          "http://127.0.0.1:5000/api/getFriendsData?username=" +
-            username +
-            "&" +
-            "userList=" +
-            this.context.userPersonalityData.personality[3].percentile +
-            "," +
-            this.context.userPersonalityData.personality[1].percentile +
-            "," +
-            this.context.userPersonalityData.personality[0].percentile +
-            "," +
-            this.context.userPersonalityData.personality[2].percentile +
-            "," +
-            this.context.userPersonalityData.personality[4].percentile
-        )
+        .get(url)
         .then(response => {
           if (response.data) {
+            console.log(url);
             return resolve(response);
           }
         })
@@ -153,7 +159,7 @@ class DashBoardFindAMatch extends React.Component {
                     </Grid>
                   </Grid>
                   <Grid container style={styles.container}>
-                    <Grid item md={12}>
+                    <Grid item md={8}>
                       <Typography align="left" style={styles.features}>
                         Agreeableness :{" "}
                         {(value.personality[3].percentile * 100).toFixed(0) +
@@ -186,6 +192,22 @@ class DashBoardFindAMatch extends React.Component {
                         Match Percent: {(value.match_percent * 100).toFixed(0)}{" "}
                         {"%"}
                       </Typography>
+                    </Grid>
+                    <Grid ite md={4}>
+                      <Typography varinat="h6" style={styles.clusterText}>
+                        Interests
+                      </Typography>
+                      {value.stackoverflow_data.items !== undefined
+                        ? value.stackoverflow_data.items
+                            .slice(0, 3)
+                            .map((val, index_1) => {
+                              return (
+                                <Typography key={index_1}>
+                                  {val.name}
+                                </Typography>
+                              );
+                            })
+                        : null}
                     </Grid>
                   </Grid>
                   <Divider />
