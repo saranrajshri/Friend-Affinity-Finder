@@ -147,7 +147,7 @@ def getUserTweetsAndCalcInsights(username):
     # watson credentials
     personality_insights = PersonalityInsightsV3(
     version='2017-10-13',
-    iam_apikey='-IFM85VuJKlrRBmOmDkQmBCfTCFk-x58w-YSmXyCjrEV',
+    iam_apikey='eQVw_t9n7GfMt4FLwaCWguuoUCLczQ-1PABNUMDWmC7D',
     url='https://gateway-lon.watsonplatform.net/personality-insights/api'
 	)
 

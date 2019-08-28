@@ -35,7 +35,7 @@ class DashBoardFindAMatch extends React.Component {
     return new Promise((resolve, reject) => {
       // Sending the user data to calculate match percentage
       var url =
-        "/api/getFriendsData?username=" +
+        "http://127.0.0.1:5000/api/getFriendsData?username=" +
         username +
         "&" +
         "redditName=" +

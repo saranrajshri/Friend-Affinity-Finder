@@ -18,7 +18,7 @@ class DashBoardUserAnalysis extends React.Component {
     // Calculate Personality insights
     axios
       .get(
-        "/api/getUserTweetsAndCalcInsights/" +
+        "http://127.0.0.1:5000/api/getUserTweetsAndCalcInsights/" +
           this.context.userData.screen_name
       )
       .then(response => {
@@ -29,7 +29,7 @@ class DashBoardUserAnalysis extends React.Component {
 
         // Calculate Sentiment Anaysis
         axios
-          .get("/api/getSentimentAnalysis/")
+          .get("http://127.0.0.1:5000/api/getSentimentAnalysis/")
           .then(response => {
             this.setState({
               sentimentAnalysis: response.data,
